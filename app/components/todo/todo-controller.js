@@ -8,27 +8,52 @@ function TodoController() {
 	// **** HINT: Everytime you make a change to any todo don't forget to get the todo list again
 	var todoService = new TodoService()
 
+	//Id generator for testing
+	function generateId(digits=15) {
+		var id = ''
+		for(var i = 0; i < digits; i++) {
+			id += String(Math.floor(Math.random() * 9))
+		}
+		return id
+	}
+
+	
+
 	// Use this getTodos function as your callback for all other edits
 	function getTodos(){
 		//FYI DONT EDIT ME :)
-		todoService.getTodos(draw)
+		todoService.getTodos(drawTodos)
 	}
 
-	function draw(todos) {
+	// Clear all button for server debug
+	this.clearAllTodos =  function() {
+		todoService.clearAllTodos(getTodos)
+	}
+
+	function drawTodos(todos) {
 		//WHAT IS MY PURPOSE?
 		//BUILD YOUR TODO TEMPLATE HERE
+		var elem = document.getElementById('todo')
 		var template = ''
 		//DONT FORGET TO LOOP
+		for (var i in todos) {
+			var item = todos[i]
+			template += `<p>${item.description}</p>`
+		}
+		elem.innerHTML = template
 	}
 
 	this.addTodoFromForm = function (event) {
 		event.preventDefault() // <-- hey this time its a freebie don't forget this
+		console.log('Todo form submitted.')
 		// TAKE THE INFORMATION FORM THE FORM
-		var form = e.target
+		var form = event.target
 		var todo = {
 			// DONT FORGET TO BUILD YOUR TODO OBJECT
+			id: generateId(),
+			description: form.description.value
 		}
-
+		console.log('Todo to add: ', todo)
 		//PASSES THE NEW TODO TO YOUR SERVICE
 		//DON'T FORGET TO REDRAW THE SCREEN WITH THE NEW TODO
 		//YOU SHOULDN'T NEED TO CHANGE THIS

@@ -1,7 +1,9 @@
 function TodoService() {
 	// A local copy of your todos
 	var todoList = []
-	var baseUrl = 'https://inspire-server.herokuapp.com/api/todos/kylekrawl'
+	var getterUrl = '//bcw-getter.herokuapp.com/?url=';
+	var baseUrl = 'https://inspire-server.herokuapp.com/api/todos/kylekrawl';
+	var url = getterUrl + encodeURIComponent(baseUrl)
 
 	function logError(err) {
 		console.error('Error: ', err)
@@ -12,17 +14,36 @@ function TodoService() {
 	this.getTodos = function (draw) {
 		$.get(baseUrl)
 			.then(function (res) { // <-- WHY IS THIS IMPORTANT????
-				
+				console.log('response to getTodo: ', res)
+				todoList = JSON.parse(res)
+				console.log('todoList: ', todoList, ' length: ', todoList.length)
+				draw(todoList)
 			})
 			.fail(logError)
 	}
 
-	this.addTodo = function (todo) {
+	//Clear all button for server debug
+	this.clearAllTodos = function (callback) {
+		$.ajax({
+			method: 'DELETE',
+			url: baseUrl
+		})
+			.then(function (res) {
+				console.log(res)
+				console.log('Deleted.')
+				callback()
+			})
+			.fail(logError)
+	}
+
+	this.addTodo = function (todo, callback) {
+		console.log('todo: ', todo)
 		// WHAT IS THIS FOR???
 		$.post(baseUrl, todo)
-			.then(function(res){ // <-- WHAT DO YOU DO AFTER CREATING A NEW TODO?
-				
-			}) 
+			.then(function (res) { // <-- WHAT DO YOU DO AFTER CREATING A NEW TODO?
+				console.log('response to addTodo: ', res)
+				callback()
+			})
 			.fail(logError)
 	}
 
@@ -47,7 +68,7 @@ function TodoService() {
 
 	this.removeTodo = function () {
 		// Umm this one is on you to write.... It's also unique, like the ajax call above. The method is a DELETE
-		
+
 	}
 
 }

@@ -3,25 +3,45 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Inspire</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body id="body"> <!-- add style property for dynamically generating background image -->
-	<div id="weather">
-		Your Weather Template
+<body id="body">
+	<div class="container-fluid">
+		<!-- add style property for dynamically generating background image -->
+		<div class="row">
+			<div class="col-sm-4">
+				<div id="weather" class='test-background'>
+					Your Weather Template
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-4">
+				<div id="quote" class='test-background'>
+					The Quote
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-4">
+				<form class="form" onsubmit="app.controllers.todoController.addTodoFromForm(event)">
+					<div class="form-group">
+						<label for="description">Description:</label>
+						<input type="text" name="description" class="form-control" placeholder="Description" required>
+					</div>
+					<div class="form-group">
+						<button class="btn btn-success" type="submit">Add</button>
+					</div>
+				</form>
+				<button class="btn btn-danger" onclick="app.controllers.todoController.clearAllTodos()">Clear All</button>
+				<div id="todo" class='test-background'>
+					A Todo List
+				</div>
+			</div>
+		</div>
 	</div>
-
-	<div id="quote">
-		The Quote
-	</div>
-
-	<div id="todo">
-		<form onsubmit=""></form>
-		A Todo List
-	</div>
-
-
-
 
 	<!--JS Libraries-->
 	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>

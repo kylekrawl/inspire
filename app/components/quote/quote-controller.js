@@ -7,7 +7,7 @@ function QuoteController(){
 		console.log('What is the quote', quoteObj)
 		var elem = document.getElementById('quote')
 		var template = `<p>${quoteObj.quote}</p>
-						-${quoteObj.author}`
+						- ${quoteObj.author}`
 		elem.innerHTML = template
 	}
 

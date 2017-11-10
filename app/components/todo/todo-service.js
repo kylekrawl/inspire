@@ -24,6 +24,7 @@ function TodoService() {
 
 	//Clear all button for server debug
 	this.clearAllTodos = function (callback) {
+		/*
 		$.ajax({
 			method: 'DELETE',
 			url: baseUrl
@@ -32,6 +33,19 @@ function TodoService() {
 				console.log(res)
 				console.log('Deleted.')
 				callback()
+			})
+			.fail(logError)
+		*/
+		console.log('Attempting to clear TODOs')
+		$.ajax({
+			method: 'PUT',
+			contentType: 'application/json',
+			url: baseUrl,
+			data: JSON.stringify({ id: 0, description: "PUT test" })
+		})
+			.then(function (res) {
+				console.log(res)
+				console.log('PUT successful.')
 			})
 			.fail(logError)
 	}

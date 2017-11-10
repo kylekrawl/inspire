@@ -21,8 +21,8 @@ function TodoController() {
 		//DONT FORGET TO LOOP
 	}
 
-	this.addTodoFromForm = function (e) {
-		e.preventDefault() // <-- hey this time its a freebie don't forget this
+	this.addTodoFromForm = function (event) {
+		event.preventDefault() // <-- hey this time its a freebie don't forget this
 		// TAKE THE INFORMATION FORM THE FORM
 		var form = e.target
 		var todo = {

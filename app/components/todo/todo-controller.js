@@ -17,28 +17,45 @@ function TodoController() {
 		return id
 	}
 
+	// Clear all button for server debug
+	this.clearFirstTodo =  function() {
+		todoService.clearFirstTodo(getTodos)
+	}
+
 	// Use this getTodos function as your callback for all other edits
 	function getTodos(){
 		//FYI DONT EDIT ME :)
 		todoService.getTodos(drawTodos)
 	}
 
-	// Clear all button for server debug
-	this.clearAllTodos =  function() {
-		todoService.clearAllTodos(getTodos)
+	function updateTodoCount() {
+		document.getElementById('todo-count').innerText = todoService.getTodoCount()
 	}
 
 	function drawTodos(todos) {
 		//WHAT IS MY PURPOSE?
 		//BUILD YOUR TODO TEMPLATE HERE
+		updateTodoCount()
 		var elem = document.getElementById('todo')
 		var template = ''
+		
 		//DONT FORGET TO LOOP
 		for (var i in todos) {
-			var item = todos[i]
-			template += `<p>${item.description}</p>`
+			var todo = todos[i]
+			console.log(typeof todo.completed)
+			todo.completed = [false, 'false'].includes(todo.completed) ? false : true //temporary fix for string value for todo.completed when first adding list item
+			console.log('completed = ', todo.completed)
+			template += `
+						<div>
+							<h5>${todo.description}</h5>
+							<p>${todo.completed ? 'Complete' : 'Incomplete'}<p>
+							<button class="btn btn-default" onclick="app.controllers.todoController.toggleTodoStatus('${todo.id}')">Toggle Status</button>
+							<button class="btn btn-danger" onclick="app.controllers.todoController.removeTodo('${todo.id}')">Delete</button>
+						</div>
+						`
 		}
 		elem.innerHTML = template
+		console.log('todoList after draw: ', todos)
 	}
 
 	this.addTodoFromForm = function (event) {
@@ -49,7 +66,8 @@ function TodoController() {
 		var todo = {
 			// DONT FORGET TO BUILD YOUR TODO OBJECT
 			id: generateId(),
-			description: form.description.value
+			description: form.description.value,
+			completed: false
 		}
 		console.log('Todo to add: ', todo)
 		//PASSES THE NEW TODO TO YOUR SERVICE
@@ -67,10 +85,11 @@ function TodoController() {
 
 	this.removeTodo = function (todoId) {
 		// ask the service to run the remove todo with this id
-
+		todoService.removeTodo(todoId, getTodos)
 		// ^^^^ THIS LINE OF CODE PROBABLY LOOKS VERY SIMILAR TO THE toggleTodoStatus
 	}
 
 	// IF YOU WANT YOUR TODO LIST TO DRAW WHEN THE PAGE FIRST LOADS WHAT SHOULD YOU CALL HERE???
-
+	getTodos()
+	//this.clearFirstTodo()
 }

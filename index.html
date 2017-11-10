@@ -26,7 +26,7 @@
 		</div>
 		<div class="row">
 			<div class="col-sm-4 test-background">
-				<h4>TODO:</h4>
+				<h4>TODO: <span id="todo-count">-</span> items</h4>
 				<form class="form" onsubmit="app.controllers.todoController.addTodoFromForm(event)">
 					<div class="form-group">
 						<label for="description">Item to Add:</label>
@@ -36,7 +36,6 @@
 						<button class="btn btn-success" type="submit">Add</button>
 					</div>
 				</form>
-				<button class="btn btn-danger" onclick="app.controllers.todoController.clearAllTodos()">Clear All</button>
 				<div id="todo" class='test-background'>
 					A Todo List
 				</div>

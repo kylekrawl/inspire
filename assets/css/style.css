@@ -1,8 +1,61 @@
+/*
+-------------------
+Grid / Flexbox
+-------------------
+*/
+
+.flex {
+    display: flex;
+}
+
+.flex.v-center {
+    align-items: center;
+}
+
+.flex.h-center {
+    justify-content: center;
+}
+
+.flex.h-left {
+    justify-content: left;
+}
+
+.flex.h-right {
+    justify-content: right;
+}
+
+/*
+-------------------
+Base Styles
+-------------------
+*/
+
 body {
     color: #000;
 }
 
+/*
+-------------------
+Main
+-------------------
+*/
+
 .test-background {
     background: #fff;
     opacity: 0.9;
+}
+
+.top-wrapper {
+    height: 19vh;
+    padding: 0 0 20% 10%;
+}
+
+.center-wrapper {
+    height: 60vh;
+    padding: 40% 0 60%;
+}
+
+.bottom-wrapper {
+    height: 19vh;
+    padding: 20% 0 0 0;
 }

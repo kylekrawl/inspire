@@ -47,10 +47,14 @@ function TodoController() {
 			console.log('completed = ', todo.completed)
 			var statusClass = todo.completed ? "completed-item" : ""
 			template += `
-						<div>
-							<p class="${statusClass}">${todo.description}</p>
-							<button class="btn btn-default" onclick="app.controllers.todoController.toggleTodoStatus('${todo.id}')">Mark ${todo.completed ? 'Incomplete' : 'Completed'}</button>
-							<button class="btn btn-danger" onclick="app.controllers.todoController.removeTodo('${todo.id}')">-</button>
+						<div class="flex v-center h-space-between">
+							<div class="flex text-wrap">
+								<p class="${statusClass}">${todo.description}</p>
+							</div>
+							<div class="flex v-center h-center">
+								<button class="btn btn-default" onclick="app.controllers.todoController.toggleTodoStatus('${todo.id}')">Mark ${todo.completed ? 'Incomplete' : 'Completed'}</button>
+								<button class="btn btn-danger" onclick="app.controllers.todoController.removeTodo('${todo.id}')">-</button>
+							</div>
 						</div>
 						`
 		}
@@ -73,6 +77,7 @@ function TodoController() {
 		//PASSES THE NEW TODO TO YOUR SERVICE
 		//DON'T FORGET TO REDRAW THE SCREEN WITH THE NEW TODO
 		//YOU SHOULDN'T NEED TO CHANGE THIS
+		form.description.value = "" // Clear text input
 		todoService.addTodo(todo, getTodos)
 		                         //^^^^^^^ EXAMPLE OF HOW TO GET YOUR TOODOS AFTER AN EDIT
 	}

@@ -8,12 +8,20 @@ Grid / Flexbox
     display: flex;
 }
 
+.flex.wrap {
+    flex-wrap: wrap;
+}
+
 .flex.v-center {
     align-items: center;
 }
 
 .flex.v-bottom {
     align-items: flex-end;
+}
+
+.flex.v-top {
+    align-items: flex-start;
 }
 
 .flex.h-center {
@@ -26,6 +34,15 @@ Grid / Flexbox
 
 .flex.h-right {
     justify-content: right;
+}
+
+.flex.h-space-between {
+    justify-content: space-between;
+}
+
+.flex.text-wrap {
+    flex-wrap: wrap;
+    word-break: break-all;
 }
 
 /*
@@ -96,4 +113,5 @@ Todo List
 
 .completed-item {
     text-decoration: line-through;
+    color: grey;
 }

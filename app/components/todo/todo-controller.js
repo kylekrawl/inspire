@@ -46,14 +46,17 @@ function TodoController() {
 			todo.completed = [false, 'false'].includes(todo.completed) ? false : true //temporary fix for string values for todo.completed when first adding list item
 			console.log('completed = ', todo.completed)
 			var statusClass = todo.completed ? "completed-item" : ""
+			var toggleButtonIcon = todo.completed ? '<i class="fa fa-check-square-o fa-2x" aria-hidden="true"></i>' :
+													'<i class="fa fa-square-o fa-2x" aria-hidden="true"></i>'
+			
 			template += `
 						<div class="flex v-center h-space-between">
 							<div class="flex text-wrap">
 								<p class="${statusClass}">${todo.description}</p>
 							</div>
 							<div class="flex v-center h-center">
-								<button class="btn btn-default" onclick="app.controllers.todoController.toggleTodoStatus('${todo.id}')">Mark ${todo.completed ? 'Incomplete' : 'Completed'}</button>
-								<button class="btn btn-danger" onclick="app.controllers.todoController.removeTodo('${todo.id}')">-</button>
+								<button class="btn btn-default btn-alt" onclick="app.controllers.todoController.toggleTodoStatus('${todo.id}')">${toggleButtonIcon}</button>
+								<button class="btn btn-default btn-alt" onclick="app.controllers.todoController.removeTodo('${todo.id}')"><i class="fa fa-minus-square-o fa-2x" aria-hidden="true"></i></button>
 							</div>
 						</div>
 						`

@@ -8,15 +8,6 @@ function TodoController() {
 	// **** HINT: Everytime you make a change to any todo don't forget to get the todo list again
 	var todoService = new TodoService()
 
-	//Id generator for testing
-	function generateId(digits=15) {
-		var id = ''
-		for(var i = 0; i < digits; i++) {
-			id += String(Math.floor(Math.random() * 9))
-		}
-		return id
-	}
-
 	// Clear all button for server debug
 	this.clearFirstTodo =  function() {
 		todoService.clearFirstTodo(getTodos)
@@ -46,8 +37,8 @@ function TodoController() {
 			todo.completed = [false, 'false'].includes(todo.completed) ? false : true //temporary fix for string values for todo.completed when first adding list item
 			console.log('completed = ', todo.completed)
 			var statusClass = todo.completed ? "completed-item" : ""
-			var toggleButtonIcon = todo.completed ? '<i class="fa fa-check-square-o fa-2x" aria-hidden="true"></i>' :
-													'<i class="fa fa-square-o fa-2x" aria-hidden="true"></i>'
+			var toggleButtonIcon = todo.completed ? '<i class="fa fa-check-square fa-2x" aria-hidden="true"></i>' :
+													'<i class="fa fa-square fa-2x" aria-hidden="true"></i>'
 			
 			template += `
 						<div class="flex v-center h-space-between">
@@ -55,8 +46,8 @@ function TodoController() {
 								<p class="${statusClass}">${todo.description}</p>
 							</div>
 							<div class="flex v-center h-center">
-								<button class="btn btn-default btn-alt" onclick="app.controllers.todoController.toggleTodoStatus('${todo.id}')">${toggleButtonIcon}</button>
-								<button class="btn btn-default btn-alt" onclick="app.controllers.todoController.removeTodo('${todo.id}')"><i class="fa fa-minus-square-o fa-2x" aria-hidden="true"></i></button>
+								<button class="btn btn-alt btn-main" onclick="app.controllers.todoController.toggleTodoStatus('${todo.id}')">${toggleButtonIcon}</button>
+								<button class="btn btn-alt btn-delete" onclick="app.controllers.todoController.removeTodo('${todo.id}')"><i class="fa fa-minus-square fa-2x" aria-hidden="true"></i></button>
 							</div>
 						</div>
 						`
@@ -72,7 +63,7 @@ function TodoController() {
 		var form = event.target
 		var todo = {
 			// DONT FORGET TO BUILD YOUR TODO OBJECT
-			id: generateId(),
+			id: todoService.generateId(),
 			description: form.description.value,
 			completed: false
 		}
@@ -99,5 +90,4 @@ function TodoController() {
 
 	// IF YOU WANT YOUR TODO LIST TO DRAW WHEN THE PAGE FIRST LOADS WHAT SHOULD YOU CALL HERE???
 	getTodos()
-	//this.clearFirstTodo()
 }

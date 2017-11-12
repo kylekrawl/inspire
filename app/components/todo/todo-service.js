@@ -11,32 +11,6 @@ function TodoService() {
 		//do this without breaking the controller/service responsibilities
 	}
 
-	this.clearFirstTodo = function (callback) {
-		console.log('Attempting to clear first TODO')
-		$.ajax({
-			method: 'DELETE',
-			url: baseUrl + `/0`,
-		})
-			.then(function (res) {
-				console.log(res)
-				console.log('DELETE successful.')
-				callback()
-			})
-			.fail(logError)
-	}
-
-	function getTodoAtId(todoId) {
-		var out
-		for (var i in todoList) {
-			var todo = todoList[i]
-			if (todo.id === todoId) {
-				out = todo
-				break
-			}
-		}
-		return out
-	}
-
 	function getTodoIndexFromId(todoId) {
 		var out
 		for (var i in todoList) {
@@ -50,6 +24,29 @@ function TodoService() {
 		}
 		console.log('i: ', out)
 		return out
+	}
+
+	this.generateId = function(digits=15) {
+		var id = ''
+		for(var i = 0; i < digits; i++) {
+			id += String(Math.floor(Math.random() * 9))
+		}
+		return id
+	}
+
+	// Clear todos function for debugging
+	this.clearFirstTodo = function (callback) {
+		console.log('Attempting to clear first TODO')
+		$.ajax({
+			method: 'DELETE',
+			url: baseUrl + `/0`,
+		})
+			.then(function (res) {
+				console.log(res)
+				console.log('DELETE successful.')
+				callback()
+			})
+			.fail(logError)
 	}
 
 	this.getTodoCount = function() {

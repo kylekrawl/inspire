@@ -58,6 +58,7 @@ html {
 
 body {
     color: #fff;
+    font-family: 'Roboto', sans-serif;
 }
 
 p {
@@ -102,13 +103,21 @@ Quote
 -------------------
 */
 
-/*
 .quote {
     font-size: 1em;
     max-height: 20em;
     overflow-y: scroll;
 }
-*/
+
+.quote-text {
+    font-family: 'Poiret One', cursive;
+    font-size: 1.2em;
+}
+
+.quote-author {
+    font-style: italic;
+}
+
 
 /*
 -------------------
@@ -116,12 +125,22 @@ Weather
 -------------------
 */
 
+.weather-icon {
+    width: 30%;
+    filter: grayscale(100%)
+}
+
 .current-temp {
-    font-size: 4em;
+    font-size: 3.5em;
 }
 
 .weather-location {
     text-transform: uppercase;
+    font-size: 1.2em;
+}
+
+.weather-type {
+    display: inline-block;
 }
 
 /*
@@ -132,7 +151,7 @@ Todo List
 
 .todo-wrapper {
     font-size: 1em;
-    max-height: 15em;
+    max-height: 25em;
     overflow-y: scroll;
 }
 

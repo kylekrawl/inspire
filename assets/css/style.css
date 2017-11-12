@@ -12,6 +12,10 @@ Grid / Flexbox
     align-items: center;
 }
 
+.flex.v-bottom {
+    align-items: flex-end;
+}
+
 .flex.h-center {
     justify-content: center;
 }
@@ -30,32 +34,66 @@ Base Styles
 -------------------
 */
 
+body,
+html {
+    background: #000;
+}
+
 body {
-    color: #000;
+    color: #fff;
+}
+
+p {
+    margin: 0;
+    padding: 0;
 }
 
 /*
 -------------------
-Main
+Display Items
 -------------------
 */
 
-.test-background {
-    background: #fff;
-    opacity: 0.9;
+.item-background {
+    background: #000;
+    opacity: 0.85;
 }
 
 .top-wrapper {
-    height: 19vh;
-    padding: 0 0 20% 10%;
+    height: 20vh;
 }
 
 .center-wrapper {
     height: 60vh;
-    padding: 40% 0 60%;
+    max-height: 60vh;
 }
 
 .bottom-wrapper {
-    height: 19vh;
-    padding: 20% 0 0 0;
+    height: 20vh;
+}
+
+.weather,
+.quote,
+.todo-wrapper {
+    border-radius: 5px;
+    padding: 5px 15px;
+}
+
+/*
+-------------------
+Todo List
+-------------------
+*/
+
+.todo-wrapper {
+    font-size: 1em;
+}
+
+.form-control {
+    color: #fff;
+    background: #000;
+}
+
+.completed-item {
+    text-decoration: line-through;
 }

@@ -12,8 +12,8 @@
 		<!-- add style property for dynamically generating background image -->
 		<div class="row top-row">
 			<div class="col-sm-offset-10 col-sm-2">
-				<div class="top-wrapper">
-					<div id="weather" class="test-background">
+				<div class="top-wrapper flex v-center h-center">
+					<div id="weather" class="weather item-background">
 					</div>
 				</div>
 			</div>
@@ -21,19 +21,18 @@
 		<div class="row center-row">
 			<div class="col-sm-4">
 				<div class="center-wrapper">
-					<div class="todo-wrapper test-background">
-						<h4>TODO:
-							<span id="todo-count">-</span> items</h4>
-						<form class="form" onsubmit="app.controllers.todoController.addTodoFromForm(event)">
+					<div class="todo-wrapper item-background">
+						<p>todo: 
+							<span id="todo-count">0</span></p>
+						<form class="form-inline" onsubmit="app.controllers.todoController.addTodoFromForm(event)">
 							<div class="form-group">
-								<label for="description">Item to Add:</label>
-								<input type="text" name="description" class="form-control" placeholder="Description" required>
+								<input type="text" name="description" class="form-control" placeholder="New Item" required>
 							</div>
 							<div class="form-group">
-								<button class="btn btn-success" type="submit">Add</button>
+								<button class="btn btn-success" type="submit">+</button>
 							</div>
 						</form>
-						<div id="todo" class='test-background'>
+						<div id="todo">
 						</div>
 					</div>
 				</div>
@@ -41,8 +40,8 @@
 		</div>
 		<div class="row bottom-row">
 			<div class="col-sm-offset-3 col-sm-6">
-				<div class="bottom-wrapper text-center">
-					<div id="quote" class="test-background">
+				<div class="bottom-wrapper text-center flex v-bottom h-center">
+					<div id="quote" class="quote item-background">
 					</div>
 				</div>
 			</div>

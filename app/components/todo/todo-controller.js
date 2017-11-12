@@ -43,14 +43,14 @@ function TodoController() {
 		for (var i in todos) {
 			var todo = todos[i]
 			console.log(typeof todo.completed)
-			todo.completed = [false, 'false'].includes(todo.completed) ? false : true //temporary fix for string value for todo.completed when first adding list item
+			todo.completed = [false, 'false'].includes(todo.completed) ? false : true //temporary fix for string values for todo.completed when first adding list item
 			console.log('completed = ', todo.completed)
+			var statusClass = todo.completed ? "completed-item" : ""
 			template += `
 						<div>
-							<h5>${todo.description}</h5>
-							<p>${todo.completed ? 'Complete' : 'Incomplete'}<p>
-							<button class="btn btn-default" onclick="app.controllers.todoController.toggleTodoStatus('${todo.id}')">Toggle Status</button>
-							<button class="btn btn-danger" onclick="app.controllers.todoController.removeTodo('${todo.id}')">Delete</button>
+							<p class="${statusClass}">${todo.description}</p>
+							<button class="btn btn-default" onclick="app.controllers.todoController.toggleTodoStatus('${todo.id}')">Mark ${todo.completed ? 'Incomplete' : 'Completed'}</button>
+							<button class="btn btn-danger" onclick="app.controllers.todoController.removeTodo('${todo.id}')">-</button>
 						</div>
 						`
 		}

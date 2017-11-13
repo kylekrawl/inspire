@@ -8,7 +8,7 @@ function TodoController() {
 	// **** HINT: Everytime you make a change to any todo don't forget to get the todo list again
 	var todoService = new TodoService()
 
-	// Clear all button for server debug
+	// Id-independent clear button for server debug
 	this.clearFirstTodo =  function() {
 		todoService.clearFirstTodo(getTodos)
 	}
@@ -34,7 +34,7 @@ function TodoController() {
 		for (var i in todos) {
 			var todo = todos[i]
 			console.log(typeof todo.completed)
-			todo.completed = [false, 'false'].includes(todo.completed) ? false : true //temporary fix for string values for todo.completed when first adding list item
+			todo.completed = [false, 'false'].includes(todo.completed) ? false : true // Temporary fix for string values for todo.completed when first adding list item
 			console.log('completed = ', todo.completed)
 			var statusClass = todo.completed ? "completed-item" : ""
 			var toggleButtonIcon = todo.completed ? '<i class="fa fa-check-square fa-2x" aria-hidden="true"></i>' :

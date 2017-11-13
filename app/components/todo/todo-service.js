@@ -76,7 +76,7 @@ function TodoService() {
 		// WHAT IS THIS FOR???
 		$.post(baseUrl, todo)
 			.then(function (res) { // <-- WHAT DO YOU DO AFTER CREATING A NEW TODO?
-				console.log('response to addTodo: ', res)
+				console.log('Response to addTodo: ', res)
 				console.log(typeof todo.completed)
 				callback()
 			})
@@ -89,9 +89,7 @@ function TodoService() {
 		var i = getTodoIndexFromId(todoId)
 		var todo = todoList[i]
 		//STEP 2: Change the completed flag to the opposite of what is is **HINT** todo.completed = !todo.completed
-		console.log('before: ', todo.completed)
 		todo.completed = !todo.completed
-		console.log('after: ', todo.completed)
 		//STEP 3: Here is that weird Ajax request because $.put doesn't exist
 		$.ajax({
 			method: 'PUT',
@@ -101,7 +99,7 @@ function TodoService() {
 		})
 			.then(function (res) {
 				//DO YOU WANT TO DO ANYTHING WITH THIS?
-				console.log('response to toggleTodoStatus: ', res)
+				console.log('Response to toggleTodoStatus: ', res)
 				callback()
 			})
 			.fail(logError)
@@ -117,7 +115,7 @@ function TodoService() {
 		})
 			.then(function (res) {
 				//DO YOU WANT TO DO ANYTHING WITH THIS?
-				console.log('response to toggleTodoStatus: ', res)
+				console.log('Response to removeTodo: ', res)
 				callback()
 			})
 			.fail(logError)

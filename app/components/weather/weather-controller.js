@@ -15,8 +15,6 @@ function WeatherController(){
 						<p class="weather-type">${weatherObj.weather[0].main}</p>
 						<img class="weather-icon" src="${iconUrl}">
 						<p class="current-temp">${convertKelvinToFahrenheit(weatherObj.main.temp).toFixed()}°</p>
-						<p>High: ${convertKelvinToFahrenheit(weatherObj.main.temp_max).toFixed()}° | 
-						Low: ${convertKelvinToFahrenheit(weatherObj.main.temp_min).toFixed()}°</p>
 						`
 		elem.innerHTML = template
 	}

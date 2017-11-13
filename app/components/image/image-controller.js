@@ -12,14 +12,13 @@ function ImageController() {
 		} else {
 			console.log('No large image url, fetching new image.')
 			imageService.getImage(drawBackgroundImage)
-			
 		}
 	}
 
-	this.getImage = function() {
+	this.getImage = function () {
 		imageService.getImage(drawBackgroundImage)
 	}
-	
+
 	this.getImage()
 }
 

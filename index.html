@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto|Poiret+One" rel="stylesheet">
 	<link rel="stylesheet" href="assets/css/style.css">
-	
+
 </head>
 
 <body id="body">
@@ -21,9 +21,11 @@
 			</div>
 		</div>
 		<div class="row center-row">
-			<div class="col-sm-4">
-				<div class="center-wrapper">
-
+			<div class="col-sm-offset-4 col-sm-4">
+				<div class="center-wrapper flex v-center h-center">
+					<div class="clock item-background text-center">
+						<span><span id="hour">00</span>:<span id="minute">00</span>:<span id="second">00</span></span>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -31,7 +33,9 @@
 			<div class="col-sm-3">
 				<div class="bottom-wrapper text-center flex v-bottom h-left">
 					<div class="change-image item-background">
-						<button class="btn btn-alt btn-main" onclick="app.controllers.imageController.getImage()"><i class="fa fa-picture-o fa-2x" aria-hidden="true"></i></button>
+						<button class="btn btn-alt btn-main" onclick="app.controllers.imageController.getImage()">
+							<i class="fa fa-picture-o fa-2x" aria-hidden="true"></i>
+						</button>
 					</div>
 				</div>
 			</div>
@@ -75,12 +79,14 @@
 	<script src="app/components/image/image-service.js"></script>
 	<script src="app/components/quote/quote-service.js"></script>
 	<script src="app/components/todo/todo-service.js"></script>
+	<script src="app/components/clock/clock-service.js"></script>
 
 	<!--Controllers-->
 	<script src="app/components/weather/weather-controller.js"></script>
 	<script src="app/components/image/image-controller.js"></script>
 	<script src="app/components/quote/quote-controller.js"></script>
 	<script src="app/components/todo/todo-controller.js"></script>
+	<script src="app/components/clock/clock-controller.js"></script>
 
 	<!--Initialize App-->
 	<script src="app/init.js"></script>

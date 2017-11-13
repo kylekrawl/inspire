@@ -89,10 +89,12 @@ Display Items
     height: 20vh;
 }
 
+/* Combine these into one class */
 .weather,
 .quote,
 .todo-wrapper,
-.change-image {
+.change-image,
+.clock {
     border-radius: 5px;
     padding: 5px 15px;
 }
@@ -105,7 +107,7 @@ Quote
 
 .quote {
     font-size: 1em;
-    max-height: 20em;
+    max-height: 25em;
     overflow-y: scroll;
 }
 
@@ -141,6 +143,16 @@ Weather
 
 .weather-type {
     display: inline-block;
+}
+
+/*
+-------------------
+Clock
+-------------------
+*/
+
+.clock {
+    font-size: 5em;
 }
 
 /*

@@ -10,7 +10,7 @@ function ClockController() {
         var hourVal =  clockService.getCurrentHour()
         var minuteVal = clockService.getCurrentMinute()
         var secondVal = clockService.getCurrentSecond()
-        var dayPeriod = (hourVal > 12 && hourVal < 23) ? "PM" : "AM"
+        var dayPeriod = (hourVal >= 12 && hourVal < 23) ? "PM" : "AM"
         hourVal = (hourVal > 0 && hourVal < 13) ? hourVal : Math.abs(12 - hourVal)
         minuteVal = String(minuteVal).length < 2 ? `0${minuteVal}` : minuteVal
         secondVal = String(secondVal).length < 2 ? `0${secondVal}` : secondVal

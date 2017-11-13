@@ -21,6 +21,7 @@ function TodoController() {
 
 	function updateTodoCount() {
 		document.getElementById('todo-count').innerText = todoService.getTodoCount()
+		document.getElementById('completed-count').innerText = todoService.getCompletedTodoCount()
 	}
 
 	function drawTodos(todos) {
@@ -29,13 +30,11 @@ function TodoController() {
 		updateTodoCount()
 		var elem = document.getElementById('todo')
 		var template = ''
-		
+		var completedCount = 0
 		//DONT FORGET TO LOOP
 		for (var i in todos) {
 			var todo = todos[i]
-			console.log(typeof todo.completed)
 			todo.completed = [false, 'false'].includes(todo.completed) ? false : true // Temporary fix for string values for todo.completed when first adding list item
-			console.log('completed = ', todo.completed)
 			var statusClass = todo.completed ? "completed-item" : ""
 			var toggleButtonIcon = todo.completed ? '<i class="fa fa-check-square fa-2x" aria-hidden="true"></i>' :
 													'<i class="fa fa-square fa-2x" aria-hidden="true"></i>'

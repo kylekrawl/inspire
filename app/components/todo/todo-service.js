@@ -53,18 +53,24 @@ function TodoService() {
 		return todoList.length
 	}
 
+	this.getCompletedTodoCount = function() {
+		var count = 0
+		for (var i in todoList) {
+			var todo = todoList[i]
+			todo.completed = [false, 'false'].includes(todo.completed) ? false : true
+			if (todo.completed) {
+				count++
+			}
+		}
+		return count
+	}
+
 	this.getTodos = function (draw) {
 		$.get(baseUrl)
 			.then(function (res) { // <-- WHY IS THIS IMPORTANT????
 				console.log('response to getTodo: ', res)
-				if (res.length > 0) {
-					console.log(typeof res[0].completed)
-				}
 				todoList = res
 				console.log('todoList: ', todoList, ' length: ', todoList.length)
-				if (res.length > 0) {
-					console.log(typeof todoList[0].completed)
-				}
 				draw(todoList)
 			})
 			.fail(logError)
@@ -77,7 +83,6 @@ function TodoService() {
 		$.post(baseUrl, todo)
 			.then(function (res) { // <-- WHAT DO YOU DO AFTER CREATING A NEW TODO?
 				console.log('Response to addTodo: ', res)
-				console.log(typeof todo.completed)
 				callback()
 			})
 			.fail(logError)

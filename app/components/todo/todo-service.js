@@ -3,6 +3,7 @@ function TodoService() {
 	var todoList = []
 	var getterUrl = '//bcw-getter.herokuapp.com/?url=';
 	var baseUrl = 'https://inspire-server.herokuapp.com/api/todos/kylekrawl';
+	//var baseUrl = 'https://inspire-server.herokuapp.com/api/todos/kylekrawltest';
 	var url = getterUrl + encodeURIComponent(baseUrl)
 
 	function logError(err) {
@@ -26,9 +27,9 @@ function TodoService() {
 		return out
 	}
 
-	this.generateId = function(digits=15) {
+	this.generateId = function (digits = 15) {
 		var id = ''
-		for(var i = 0; i < digits; i++) {
+		for (var i = 0; i < digits; i++) {
 			id += String(Math.floor(Math.random() * 9))
 		}
 		return id
@@ -49,11 +50,11 @@ function TodoService() {
 			.fail(logError)
 	}
 
-	this.getTodoCount = function() {
+	this.getTodoCount = function () {
 		return todoList.length
 	}
 
-	this.getCompletedTodoCount = function() {
+	this.getCompletedTodoCount = function () {
 		var count = 0
 		for (var i in todoList) {
 			var todo = todoList[i]
@@ -77,15 +78,15 @@ function TodoService() {
 	}
 
 	this.addTodo = function (todo, callback) {
-		console.log('todo: ', todo)
-		console.log(typeof todo.completed)
 		// WHAT IS THIS FOR???
-		$.post(baseUrl, todo)
-			.then(function (res) { // <-- WHAT DO YOU DO AFTER CREATING A NEW TODO?
-				console.log('Response to addTodo: ', res)
-				callback()
-			})
-			.fail(logError)
+		if (todo.hasOwnProperty('id')) {
+			$.post(baseUrl, todo)
+				.then(function (res) { // <-- WHAT DO YOU DO AFTER CREATING A NEW TODO?
+					console.log('Response to addTodo: ', res)
+					callback()
+				})
+				.fail(logError)
+		}
 	}
 
 	this.toggleTodoStatus = function (todoId, callback) {
@@ -125,5 +126,4 @@ function TodoService() {
 			})
 			.fail(logError)
 	}
-
 }

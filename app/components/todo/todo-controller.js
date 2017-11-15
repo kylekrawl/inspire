@@ -42,7 +42,7 @@ function TodoController() {
 			template += `
 						<div class="flex v-center h-space-between">
 							<div class="flex text-wrap">
-								<p class="${statusClass}">${todo.description}</p>
+								<p class="${statusClass}"><span id="todo-${todo.id}"><span></p>
 							</div>
 							<div class="flex v-center h-center">
 								<button class="btn btn-alt btn-main" onclick="app.controllers.todoController.toggleTodoStatus('${todo.id}')">${toggleButtonIcon}</button>
@@ -52,7 +52,15 @@ function TodoController() {
 						`
 		}
 		elem.innerHTML = template
+
+		// Input Sanitization:
+		
+		for (var i in todos) {
+			var todo = todos[i]
+			document.getElementById(`todo-${todo.id}`).innerText = `${todo.description}`
+		}
 		console.log('todoList after draw: ', todos)
+		
 	}
 
 	this.addTodoFromForm = function (event) {
@@ -89,4 +97,6 @@ function TodoController() {
 
 	// IF YOU WANT YOUR TODO LIST TO DRAW WHEN THE PAGE FIRST LOADS WHAT SHOULD YOU CALL HERE???
 	getTodos()
+	//Debug:
+	//this.clearFirstTodo()
 }
